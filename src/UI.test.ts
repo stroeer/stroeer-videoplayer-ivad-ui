@@ -1,4 +1,4 @@
-import StroeerVideoplayerDefaultUI from './UI'
+import StroeerVideoplayerIvadUI from './UI'
 import { version } from '../package.json'
 
 const playStub = jest
@@ -73,47 +73,35 @@ class StroeerVideoplayer {
 
 const svp = new StroeerVideoplayer()
 
-StroeerVideoplayerDefaultUI.init(svp)
+StroeerVideoplayerIvadUI.init(svp)
 
 it('should equal the version from package.json', () => {
-  expect(StroeerVideoplayerDefaultUI.version).toBe(version)
+  expect(StroeerVideoplayerIvadUI.version).toBe(version)
 })
 
 it('should exit early', () => {
-  StroeerVideoplayerDefaultUI.init(svp)
-  expect(uiEl.querySelectorAll('.default').length).toBe(1)
+  StroeerVideoplayerIvadUI.init(svp)
+  expect(uiEl.querySelectorAll('.ivad').length).toBe(1)
 })
 
 it('should remove the controls from the video element', () => {
   expect(videoEl.getAttribute('controls')).toBe(null)
 })
 
-it('should append the default icons as svg to the document body', () => {
-  expect(document.getElementById('stroeer-videoplayer-default-ui-icons')).not.toEqual(null)
+it('should append the ivad icons as svg to the document body', () => {
+  expect(document.getElementById('stroeer-videoplayer-ivad-ui-icons')).not.toEqual(null)
 })
 
 it('should have an UI container', () => {
-  expect(uiEl.querySelector('.default')).not.toEqual(null)
+  expect(uiEl.querySelector('.ivad')).not.toEqual(null)
 })
 
 it('should have a controlbar container', () => {
   expect(uiEl.querySelector('.controlbar')).not.toEqual(null)
 })
 
-it('should have a timeline container', () => {
-  expect(uiEl.querySelector('.timeline')).not.toEqual(null)
-})
-
-it('should have a timeline elapsed element', () => {
-  expect(uiEl.querySelector('.timeline .elapsed')).not.toEqual(null)
-})
-
 it('should have a buttons container', () => {
   expect(uiEl.querySelector('.buttons')).not.toEqual(null)
-})
-
-it('should have a hidden replay button in the buttons container', () => {
-  expect(uiEl.querySelector('.buttons .replay.hidden')).not.toEqual(null)
 })
 
 it('should have a play button in the buttons container', () => {
@@ -138,12 +126,6 @@ it('should have an enterFullscreen button in the buttons container', () => {
 
 it('should have an exitFullscreen button in the buttons container', () => {
   expect(uiEl.querySelector('.buttons .exitFullscreen')).not.toEqual(null)
-})
-
-it('should trigger a play, when clicking on the replay button', () => {
-  const btn = uiEl.querySelector('.buttons .replay') as HTMLButtonElement
-  btn.click()
-  expect(playStub).toHaveBeenCalled()
 })
 
 it('should trigger a play, when clicking on the play button', () => {
