@@ -1,0 +1,39 @@
+.stroeer-videoplayer .stroeer-videoplayer-ui .ivad .volume-container {
+	transition: opacity 0.2s ease-in;
+	position: absolute;
+	bottom: 44px;
+	left: 48px;
+	height: 80px;
+	width: 24px;
+	border-radius: 8px;
+	background: rgba(23, 27, 38, 0.9);
+
+	.volume-range {
+		user-select: none;
+		position: relative;
+		margin: 8px auto;
+		height: 64px;
+		width: 3px;
+		background: #666;
+
+		.volume-level-bubble {
+			user-select: none;
+			position: absolute;
+			left: -3px;
+			background: #fff;
+			border-radius: 50%;
+			width: 9px;
+			height: 9px;
+		}
+
+		.volume-level {
+			user-select: none;
+			position: absolute;
+			bottom: 0;
+			width: 2px;
+			background: #fff;
+			height: 100%;
+			width: 2px;
+		}
+	}
+}

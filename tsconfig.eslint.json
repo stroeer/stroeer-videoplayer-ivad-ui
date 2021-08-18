@@ -1,0 +1,18 @@
+{
+  "forceConsitentCasingInFileNames": true,
+  "compilerOptions": {
+    "rootDir": ".",
+    "esModuleInterop": true,
+    "module": "es2015",
+    "moduleResolution": "node",
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "strict": true,
+    "target": "es5",
+    "outDir": "dist"
+  },
+  "include": ["src/**/*.ts", "custom.d.ts"],
+  "exclude": ["node_modules"]
+}

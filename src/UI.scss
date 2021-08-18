@@ -1,0 +1,107 @@
+@import 'variables';
+@import 'loading-spinner';
+@import 'volume-slider';
+
+.stroeer-videoplayer video {
+    border-radius: 5px;
+}
+.stroeer-videoplayer .stroeer-videoplayer-ui {
+    top: 0;
+}
+.stroeer-videoplayer .stroeer-videoplayer-ui .ivad {
+	position: relative;
+	z-index: 200;
+	height: 100%;
+	overflow: hidden;
+	font-family: Roboto, Arial, Helvetica, sans-serif;
+	.hidden {
+		display: none !important;
+	}
+	.video-overlay {
+		position: absolute;
+		z-index: 201;
+		display: flex;
+		width: 100%;
+		height: 100%;
+		&.touch {
+			width: initial;
+			height: initial;
+			right: 10px;
+			top: 10px;
+			color: #fff;
+			text-shadow: -1px -1px 0px #000, 0px -1px 0px #000, 1px -1px 0px #000, -1px  0px 0px #000, 1px  0px 0px #000, -1px  1px 0px #000, 0px  1px 0px #000, 1px  1px 0px #000;
+		}
+	}
+	.controlbar-container {
+		bottom: 0;
+		padding-bottom: 5px;
+		height: 40px;
+		transition: all ease-in 0.2s;
+		position: absolute;
+		z-index: 300;
+		width: 100%;
+		background: rgb(0,0,0);
+		background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+		border-bottom-right-radius: 5px;
+		border-bottom-left-radius: 5px;
+	}
+	.controlbar {
+		margin: 0 auto;
+		position: relative;
+		width: 95%;
+                .time {
+	            position: absolute;
+	            left: 96px;
+	            bottom: 4px;
+	            color: #fff;
+	            font-size: 12px;
+		    font-family: Roboto, Arial, Helvetica, sans-serif;
+                    >div {
+	                display: inline-block;
+	                margin: 0 2px;
+                    }
+                }
+                .buttons {
+			display: block;
+			height: 32px;
+			button {
+				border: 0 none;
+				margin: 4px 0;
+				padding: 4px 8px;
+				background-color: transparent;
+				&:hover {
+					svg {
+						fill: $primaryColor1;
+						stroke: $primaryColor1;
+					}
+				}
+				&.hidden {
+					display: none;
+				}
+				svg {
+					fill: #fff;
+					stroke: #fff;
+					height: 24px;
+					width: 24px;
+				}
+			}
+                        .enterFullscreen,
+			.exitFullscreen {
+	                    position: absolute;
+	                    right: 0;
+                        }
+		}
+	}
+	@media screen and (max-width: 360px) {
+	    .volSliderBox {
+		width: 80px;
+		left: 110px;
+	    }
+	}
+	@media screen and (max-width: 340px) {
+	    .volSliderBox {
+		width: 60px;
+		left: 100px;
+	    }
+	}
+}
