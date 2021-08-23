@@ -23,14 +23,17 @@
 		display: flex;
 		width: 100%;
 		height: 100%;
-		&.touch {
-			width: initial;
-			height: initial;
-			right: 10px;
-			top: 10px;
-			color: #fff;
-			text-shadow: -1px -1px 0px #000, 0px -1px 0px #000, 1px -1px 0px #000, -1px  0px 0px #000, 1px  0px 0px #000, -1px  1px 0px #000, 0px  1px 0px #000, 1px  1px 0px #000;
-		}
+	}
+	.video-overlay-touchclick {
+		position: absolute;
+		z-index: 202;
+		display: flex;
+		width: initial;
+		height: initial;
+		right: 10px;
+		top: 10px;
+		color: #fff;
+		text-shadow: -1px -1px 0px #000, 0px -1px 0px #000, 1px -1px 0px #000, -1px  0px 0px #000, 1px  0px 0px #000, -1px  1px 0px #000, 0px  1px 0px #000, 1px  1px 0px #000;
 	}
 	.controlbar-container {
 		bottom: 0;

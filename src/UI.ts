@@ -193,13 +193,11 @@ class UI {
     })()
 
     if (isTouchDevice()) {
-      overlayContainer.classList.add('touch')
-      overlayContainer.innerHTML = 'Mehr Informationen'
+      const overlayTouchClickContainer = document.createElement('div')
+      overlayTouchClickContainer.className = 'video-overlay-touchclick'
+      overlayTouchClickContainer.innerHTML = 'Mehr Informationen'
+      uiContainer.appendChild(overlayTouchClickContainer)
     }
-
-    overlayContainer.addEventListener('click', () => {
-      console.log('overlay click')
-    })
 
     const showLoading = (modus: boolean): void => {
       if (modus) {
