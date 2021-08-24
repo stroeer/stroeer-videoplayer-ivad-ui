@@ -237,7 +237,7 @@ class UI {
     const muteButton = this.createButton(StroeerVideoplayer, 'button', 'mute', 'Mute', 'Icon-Volume', videoEl.muted,
       [{ name: 'click', callb: () => { videoEl.muted = true } }])
 
-    const unmuteButton = this.createButton(StroeerVideoplayer, 'button', 'unmute', 'Unmute', 'Icon-Mute', true,
+    const unmuteButton = this.createButton(StroeerVideoplayer, 'button', 'unmute', 'Unmute', 'Icon-Mute', videoEl.muted !== true,
       [{ name: 'click', callb: () => { videoEl.muted = false } }])
 
     // Time Display
