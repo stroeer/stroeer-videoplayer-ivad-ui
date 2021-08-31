@@ -110,7 +110,10 @@ class UI {
 
   setTimeDisp = (timeDisp: HTMLElement, current: number, total: number): void => {
     const secondsLeft = Math.floor(total - current)
-    const secondsLeftString = String(secondsLeft)
+    let secondsLeftString = String(secondsLeft)
+    if (isNaN(secondsLeft)) {
+      secondsLeftString = '∞'
+    }
     timeDisp.innerHTML = 'Werbung endet in ' + secondsLeftString + ' Sekunden'
   }
 
