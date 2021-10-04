@@ -386,15 +386,15 @@ class UI {
     }
 
     const updateVolumeWhileDragging = (evt: any): void => {
-      let pageY = evt.pageY
-      if (pageY === undefined) {
+      let clientY = evt.clientY
+      if (clientY === undefined) {
         if ('touches' in evt && evt.touches.length > 0) {
-          pageY = evt.touches[0].clientY
+          clientY = evt.touches[0].clientY
         } else {
-          pageY = false
+          clientY = false
         }
       }
-      if (pageY === false) return
+      if (clientY === false) return
       const volumeRangeBoundingClientRect = volumeRange.getBoundingClientRect()
       let volumeContainerOffsetY = 0
       if ('x' in volumeRangeBoundingClientRect) {
@@ -402,7 +402,7 @@ class UI {
       } else {
         volumeContainerOffsetY = volumeRangeBoundingClientRect.top
       }
-      let y = pageY - volumeContainerOffsetY
+      let y = clientY - volumeContainerOffsetY
       if (y < 0) y = 0
       if (y > volumeRangeBoundingClientRect.height) { y = volumeRangeBoundingClientRect.height }
 
