@@ -492,10 +492,12 @@ class UI {
     })
 
     this.onDocumentFullscreenChange = () => {
-      if (document.fullscreenElement === rootEl) {
+      if (document.fullscreenElement === rootEl || document.fullscreenElement === videoEl) {
+        videoEl.dispatchEvent(new Event('fullscreen'))
         hideElement(enterFullscreenButton)
         showElement(exitFullscreenButton)
       } else {
+        videoEl.dispatchEvent(new Event('exitFullscreen'))
         showElement(enterFullscreenButton)
         hideElement(exitFullscreenButton)
       }
