@@ -1,5 +1,5 @@
 {
- "version": "0.0.9",
+ "version": "0.0.10",
  "name": "@stroeer/stroeer-videoplayer-ivad-ui",
  "description": "Ströer Videoplayer IVAD UI",
  "main": "dist/StroeerVideoplayer-ivad-ui.cjs.js",
@@ -26,9 +26,6 @@
   "type": "git",
   "url": "git@github.com:stroeer/stroeer-videoplayer-ivad-ui.git"
  },
- "publishConfig": {
-    "registry":"https://npm.pkg.github.com"
-  },
  "author": "Marco Kellershoff <marco@kellershoff.net>",
  "license": "MIT",
  "devDependencies": {
