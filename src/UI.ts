@@ -388,9 +388,11 @@ class UI {
     }
     videoEl.addEventListener('timeupdate', this.onVideoElTimeupdate)
 
-    // set intial value of volume bar
+    // set initial value of volume bar
     volumeLevel.style.height = String(videoEl.volume * 100) + '%'
-    volumeLevelBubble.style.top = String(videoEl.volume * 100) + '%'
+    if (videoEl.volume <= 0.9) {
+      volumeLevelBubble.style.bottom = String(videoEl.volume * 100) + '%'
+    }
 
     const calulateVolumePercentageBasedOnYCoords = (y: number): number => {
       const percentage = (100 / volumeRange.offsetHeight) * y
