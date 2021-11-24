@@ -1,5 +1,5 @@
 {
- "version": "0.0.10",
+ "version": "0.0.11",
  "name": "@stroeer/stroeer-videoplayer-ivad-ui",
  "description": "Ströer Videoplayer IVAD UI",
  "main": "dist/StroeerVideoplayer-ivad-ui.cjs.js",

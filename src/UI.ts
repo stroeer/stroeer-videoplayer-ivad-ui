@@ -248,6 +248,10 @@ class UI {
     timeDisp.classList.add('time')
     controlBar.appendChild(timeDisp)
 
+    const isAlreadyInFullscreenMode = (): boolean => {
+      return (document.fullscreenElement === rootEl || document.fullscreenElement === videoEl)
+    }
+
     StroeerVideoplayer.enterFullscreen = (): void => {
       if (typeof rootEl.requestFullscreen === 'function') {
         rootEl.requestFullscreen()
@@ -270,9 +274,11 @@ class UI {
       }
     }
 
+    const enterFullscreenButtonIsHidden = isAlreadyInFullscreenMode()
+
     // Fullscreen Button
     const enterFullscreenButton = this.createButton(StroeerVideoplayer, 'button', 'enterFullscreen',
-      'Enter Fullscreen', 'Icon-Fullscreen', false,
+      'Enter Fullscreen', 'Icon-Fullscreen', enterFullscreenButtonIsHidden,
       [{
         name: 'click',
         callb: () => {
@@ -296,7 +302,9 @@ class UI {
       }
     }
 
-    const exitFullscreenButton = this.createButton(StroeerVideoplayer, 'button', 'exitFullscreen', 'Exit Fullscreen', 'Icon-FullscreenOff', true,
+    const exitFullscreenButtonIsHidden = !isAlreadyInFullscreenMode()
+
+    const exitFullscreenButton = this.createButton(StroeerVideoplayer, 'button', 'exitFullscreen', 'Exit Fullscreen', 'Icon-FullscreenOff', exitFullscreenButtonIsHidden,
       [{
         name: 'click',
         callb: () => {
@@ -379,6 +387,10 @@ class UI {
       this.setTimeDisp(timeDisp, videoEl.currentTime, videoEl.duration)
     }
     videoEl.addEventListener('timeupdate', this.onVideoElTimeupdate)
+
+    // set intial value of volume bar
+    volumeLevel.style.height = String(videoEl.volume * 100) + '%'
+    volumeLevelBubble.style.top = String(videoEl.volume * 100) + '%'
 
     const calulateVolumePercentageBasedOnYCoords = (y: number): number => {
       const percentage = (100 / volumeRange.offsetHeight) * y
