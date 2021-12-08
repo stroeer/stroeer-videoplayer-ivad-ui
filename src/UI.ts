@@ -110,11 +110,12 @@ class UI {
 
   setTimeDisp = (timeDisp: HTMLElement, current: number, total: number): void => {
     const secondsLeft = Math.floor(total - current)
-    let secondsLeftString = String(secondsLeft)
+    const secondsLeftString = String(secondsLeft)
     if (isNaN(secondsLeft)) {
-      secondsLeftString = '∞'
+      timeDisp.innerHTML = 'Werbung'
+    } else {
+      timeDisp.innerHTML = 'Werbung endet in ' + secondsLeftString + ' Sekunden'
     }
-    timeDisp.innerHTML = 'Werbung endet in ' + secondsLeftString + ' Sekunden'
   }
 
   init = (StroeerVideoplayer: IStroeerVideoplayer): void => {
