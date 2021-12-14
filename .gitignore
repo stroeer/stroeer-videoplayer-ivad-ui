@@ -4,3 +4,4 @@ node_modules
 dev.html
 /package-lock.json
 .idea
+/deploy.sh

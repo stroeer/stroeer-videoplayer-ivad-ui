@@ -203,6 +203,11 @@ class UI {
       uiContainer.appendChild(overlayTouchClickContainer)
     }
 
+    const dispatchEvent = (eventName: string, data?: any): void => {
+      const event = new CustomEvent(eventName, { detail: data })
+      videoEl.dispatchEvent(event)
+    }
+
     const showLoading = (modus: boolean): void => {
       if (modus) {
         showElement(loadingSpinnerContainer)
@@ -229,20 +234,56 @@ class UI {
 
     // Create the Buttons
     const playButton = this.createButton(StroeerVideoplayer, 'button', 'play', 'Play', 'Icon-Play', false,
-      [{ name: 'click', callb: () => { videoEl.play() } }])
+      [
+        {
+          name: 'click',
+          callb: () => {
+            dispatchEvent('UIPlay', videoEl.currentTime)
+            dispatchEvent('UIIVADPlay', videoEl.currentTime)
+            videoEl.play()
+          }
+        }
+      ])
 
     if (videoEl.paused === false) {
       hideElement(playButton)
     }
 
     const pauseButton = this.createButton(StroeerVideoplayer, 'button', 'pause', 'Pause', 'Icon-Pause', videoEl.paused,
-      [{ name: 'click', callb: () => { videoEl.pause() } }])
+      [
+        {
+          name: 'click',
+          callb: () => {
+            dispatchEvent('UIPause', videoEl.currentTime)
+            dispatchEvent('UIIVADPause', videoEl.currentTime)
+            videoEl.pause()
+          }
+        }
+      ])
 
     const muteButton = this.createButton(StroeerVideoplayer, 'button', 'mute', 'Mute', 'Icon-Volume', videoEl.muted,
-      [{ name: 'click', callb: () => { videoEl.muted = true } }])
+      [
+        {
+          name: 'click',
+          callb: () => {
+            dispatchEvent('UIMute', videoEl.currentTime)
+            dispatchEvent('UIIVADMute', videoEl.currentTime)
+            videoEl.muted = true
+          }
+        }
+      ])
 
     const unmuteButton = this.createButton(StroeerVideoplayer, 'button', 'unmute', 'Unmute', 'Icon-Mute', videoEl.muted !== true,
-      [{ name: 'click', callb: () => { videoEl.muted = false } }])
+      [
+        {
+          name: 'click',
+          callb: () => {
+            dispatchEvent('UIUnmute', videoEl.currentTime)
+            dispatchEvent('UIIVADUnmute', videoEl.currentTime)
+            videoEl.muted = false
+          }
+        }
+      ])
 
     // Time Display
     const timeDisp = document.createElement('div')
@@ -283,6 +324,8 @@ class UI {
       [{
         name: 'click',
         callb: () => {
+          dispatchEvent('UIEnterFullscreen', videoEl.currentTime)
+          dispatchEvent('UIIVADEnterFullscreen', videoEl.currentTime)
           StroeerVideoplayer.enterFullscreen()
         }
       }])
@@ -309,6 +352,8 @@ class UI {
       [{
         name: 'click',
         callb: () => {
+          dispatchEvent('UIExitFullscreen', videoEl.currentTime)
+          dispatchEvent('UIIVADExitFullscreen', videoEl.currentTime)
           StroeerVideoplayer.exitFullscreen()
         }
       }])
@@ -440,6 +485,14 @@ class UI {
         case volumeRange:
         case volumeLevel:
         case volumeLevelBubble:
+          dispatchEvent('UIVolumeChangeStart', {
+            volume: videoEl.volume,
+            currentTime: videoEl.currentTime
+          })
+          dispatchEvent('UIIVADVolumeChangeStart', {
+            volume: videoEl.volume,
+            currentTime: videoEl.currentTime
+          })
           draggingWhat = 'volume'
           break
         default:
@@ -451,6 +504,14 @@ class UI {
       if (draggingWhat === 'volume') {
         draggingWhat = ''
         updateVolumeWhileDragging(evt)
+        dispatchEvent('UIVolumeChangeEnd', {
+          volume: videoEl.volume,
+          currentTime: videoEl.currentTime
+        })
+        dispatchEvent('UIIVADVolumeChangeEnd', {
+          volume: videoEl.volume,
+          currentTime: videoEl.currentTime
+        })
       }
     }
 
