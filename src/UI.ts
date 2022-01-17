@@ -240,6 +240,11 @@ class UI {
           callb: () => {
             dispatchEvent('UIPlay', videoEl.currentTime)
             dispatchEvent('UIIVADPlay', videoEl.currentTime)
+
+            if (videoEl.currentTime > 0) {
+              dispatchEvent('UIIVADResume', videoEl.currentTime)
+            }
+
             videoEl.play()
           }
         }

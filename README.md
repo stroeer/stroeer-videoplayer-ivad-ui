@@ -15,6 +15,7 @@ See coverage with `yarn run test --coverage`.
  - exitFullscreen
  - UIPlay (currentTime)
  - UIIVADPlay (currentTime)
+ - UIIVADResume (currentTime)
  - UIPause (currentTime)
  - UIIVADPause (currentTime)
  - UIMute (currentTime)
