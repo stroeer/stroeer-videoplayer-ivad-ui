@@ -460,7 +460,7 @@ class UI {
         }
       }
       if (clientY === false) return
-      const volumeRangeBoundingClientRect = volumeRange.getBoundingClientRect()
+      const volumeRangeBoundingClientRect: any = volumeRange.getBoundingClientRect()
       let volumeContainerOffsetY = 0
       if ('x' in volumeRangeBoundingClientRect) {
         volumeContainerOffsetY = volumeRangeBoundingClientRect.y

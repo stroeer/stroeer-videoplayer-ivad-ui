@@ -25,7 +25,9 @@ export default [{
   output: [
     {
       file: pkg.main,
-      format: 'cjs'
+      exports: 'default',
+      format: 'cjs',
+      sourcemap: true
     }
   ],
   plugins: [
@@ -41,7 +43,9 @@ export default [{
   output: [
     {
       file: pkg.module,
-      format: 'es'
+      exports: 'default',
+      format: 'es',
+      sourcemap: true
     }
   ],
   plugins: [
