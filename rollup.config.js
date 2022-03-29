@@ -5,6 +5,9 @@ import pkg from './package.json'
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 
+const isDevMode = Boolean(process.env.ROLLUP_WATCH)
+console.log('is dev mode', isDevMode)
+
 export default [{
   input: 'src/UI.ts',
   output: {
@@ -12,10 +15,12 @@ export default [{
     exports: 'default',
     format: 'umd',
     name: 'StroeerVideoplayerIvadUI',
-    sourcemap: true
+    sourcemap: isDevMode
   },
   plugins: [
-    typescript(),
+    typescript({
+      sourceMap: isDevMode
+    }),
     json(),
     svg()
   ]
@@ -27,13 +32,15 @@ export default [{
       file: pkg.main,
       exports: 'default',
       format: 'cjs',
-      sourcemap: true
+      sourcemap: isDevMode
     }
   ],
   plugins: [
     resolve(),
     commonjs(),
-    typescript(),
+    typescript({
+      sourceMap: isDevMode
+    }),
     json(),
     svg()
   ]
@@ -45,13 +52,15 @@ export default [{
       file: pkg.module,
       exports: 'default',
       format: 'es',
-      sourcemap: true
+      sourcemap: isDevMode
     }
   ],
   plugins: [
     resolve(),
     commonjs(),
-    typescript(),
+    typescript({
+      sourceMap: isDevMode
+    }),
     json(),
     svg()
   ]
