@@ -73,14 +73,15 @@ class StroeerVideoplayer {
 
 const svp = new StroeerVideoplayer()
 
-StroeerVideoplayerIvadUI.init(svp)
+const stroeerVideoplayerIvadUI = new StroeerVideoplayerIvadUI()
+stroeerVideoplayerIvadUI.init(svp)
 
 it('should equal the version from package.json', () => {
   expect(StroeerVideoplayerIvadUI.version).toBe(version)
 })
 
 it('should exit early', () => {
-  StroeerVideoplayerIvadUI.init(svp)
+  stroeerVideoplayerIvadUI.init(svp)
   expect(uiEl.querySelectorAll('.ivad').length).toBe(1)
 })
 

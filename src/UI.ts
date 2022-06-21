@@ -2,6 +2,7 @@ import { version } from '../package.json'
 import UIIcons from './sprites/svg/sprite.symbol.svg'
 import noop from './noop'
 import SVGHelper from './SVGHelper'
+import Logger from './Logger'
 
 interface IStroeerVideoplayer {
   getUIEl: Function
@@ -45,8 +46,8 @@ const showElement = (element: HTMLElement): void => {
 }
 
 class UI {
-  version: string
-  uiName: string
+  public static version: string = version
+  public static uiName: string = 'ivad'
   uiContainerClassName: string
   onDocumentFullscreenChange: Function
   onVideoElPlay: Function
@@ -62,8 +63,6 @@ class UI {
   isMouseDown: Boolean
 
   constructor () {
-    this.version = version
-    this.uiName = 'ivad'
     this.uiContainerClassName = 'ivad'
     this.onDocumentFullscreenChange = noop
     this.onVideoElPlay = noop
@@ -119,6 +118,7 @@ class UI {
   }
 
   init = (StroeerVideoplayer: IStroeerVideoplayer): void => {
+    Logger.log('version', version)
     const rootEl = StroeerVideoplayer.getRootEl()
     const videoEl = StroeerVideoplayer.getVideoEl()
     videoEl.removeAttribute('controls')
@@ -641,6 +641,4 @@ class UI {
   }
 }
 
-const StroeerVideoplayerIvadUI = new UI()
-
-export default StroeerVideoplayerIvadUI
+export default UI
