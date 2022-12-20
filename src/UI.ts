@@ -137,13 +137,6 @@ class UI {
     const uiContainer = document.createElement('div')
     const loadingSpinnerContainer = document.createElement('div')
     const loadingSpinnerAnimation = document.createElement('div')
-    const seekPreviewContainer = document.createElement('div')
-    const seekPreview = document.createElement('div')
-    const seekPreviewVideo = document.createElement('video')
-    const seekPreviewTime = document.createElement('div')
-    const seekPreviewTimeMinutes = document.createElement('span')
-    const seekPreviewTimeDivider = document.createElement('span')
-    const seekPreviewTimeSeconds = document.createElement('span')
     const volumeContainer = document.createElement('div')
     const volumeRange = document.createElement('div')
     const volumeLevel = document.createElement('div')
@@ -151,21 +144,6 @@ class UI {
     const controlBar = document.createElement('div')
     const buttonsContainer = document.createElement('div')
     const overlayContainer = document.createElement('div')
-    seekPreviewVideo.setAttribute('preload', 'auto')
-    seekPreviewContainer.classList.add('seek-preview-container')
-    hideElement(seekPreviewContainer)
-    seekPreview.classList.add('seek-preview')
-    seekPreviewTime.classList.add('seek-preview-time')
-    seekPreviewTimeMinutes.classList.add('seek-preview-time-minutes')
-    seekPreviewTimeDivider.classList.add('seek-preview-time-divider')
-    seekPreviewTimeDivider.innerHTML = ':'
-    seekPreviewTimeSeconds.classList.add('seek-preview-time-seconds')
-    seekPreviewTime.appendChild(seekPreviewTimeMinutes)
-    seekPreviewTime.appendChild(seekPreviewTimeDivider)
-    seekPreviewTime.appendChild(seekPreviewTimeSeconds)
-    seekPreview.appendChild(seekPreviewVideo)
-    seekPreview.appendChild(seekPreviewTime)
-    seekPreviewContainer.appendChild(seekPreview)
     volumeContainer.className = 'volume-container'
     volumeContainer.style.opacity = '0'
     volumeRange.className = 'volume-range'
@@ -362,8 +340,6 @@ class UI {
           StroeerVideoplayer.exitFullscreen()
         }
       }])
-
-    seekPreviewVideo.src = videoEl.querySelector('source').src
 
     controlBar.appendChild(buttonsContainer)
 
